@@ -2,6 +2,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import Stack from './classes/Stack'
+import Deck from './classes/CardDeck'
+
+// let stack = new Stack(3)
+// stack.push(4)
+// stack.push(2)
+// stack.push(1)
+// console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.pop())
+// console.log(stack.arr)
+
+let deck = new Deck()
 
 Vue.config.productionTip = false
 
