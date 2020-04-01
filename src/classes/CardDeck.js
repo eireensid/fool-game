@@ -31,5 +31,11 @@ export default class Deck {
       arr[j] = temp
     }
   }
+  isEmpty () {
+    return this.stack.isEmpty()
+  }
+  pickCard () {
+    return this.stack.pop()
+  }
 }
 

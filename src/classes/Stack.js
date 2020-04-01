@@ -25,6 +25,10 @@ class Stack {
     this.topInd = this.topInd + 1
     return el
   }
+
+  isEmpty () {
+    return this.topInd === this.size
+  }
 }
 
 export default Stack

@@ -16,6 +16,10 @@ import Deck from './classes/CardDeck'
 // console.log(stack.arr)
 
 let deck = new Deck()
+while (!deck.isEmpty()) {
+  let card = deck.pickCard()
+  console.log('pick card', card)
+}
 
 Vue.config.productionTip = false
 
