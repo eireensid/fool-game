@@ -12,6 +12,7 @@ export default class List {
     this.tail = null
     this.count = 0
   }
+
   append (value) {
     if (this.head === null) {
       this.head = new Node(value, null, null)
@@ -23,9 +24,10 @@ export default class List {
     }
     this.count++
   }
+
   delete (ind) {
     let node = this.head
-    for (let i = 0; i <= ind; i++) {
+    for (let i = 0; i < ind; i++) {
       node = node.next
     }
     let prev = node.prev
@@ -37,5 +39,26 @@ export default class List {
       next.prev = prev
     }
     this.count--
+  }
+
+  insert (ind, value) {
+    if (ind === this.count) {
+      this.append(value)
+      return
+    }
+    let node = this.head
+    for (let i = 0; i < ind; i++) {
+      node = node.next
+    }
+    let prev = node.prev
+    let newNode = new Node(value, node, prev)
+    if (prev !== null) {
+      prev.next = newNode
+    }
+    node.prev = newNode
+    this.count++
+    if (ind === 0) {
+      this.head = newNode
+    }
   }
 }

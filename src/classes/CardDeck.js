@@ -21,7 +21,11 @@ export default class Deck {
       this.stack.push(card)
     }
     console.log('stack', this.stack)
+
+    let randomInd = Math.floor(Math.random() * 4)
+    this.trump = Card.suits[randomInd]
   }
+
   shuffleArr (arr) {
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
