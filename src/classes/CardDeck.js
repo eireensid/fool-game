@@ -13,14 +13,12 @@ export default class Deck {
         cards.push(card)
       }
     }
-    console.log('cards', cards)
     this.shuffleArr(cards)
     console.log('create deck', cards)
     for (let i = 0; i < cards.length; i++) {
       let card = cards[i]
       this.stack.push(card)
     }
-    console.log('stack', this.stack)
 
     let randomInd = Math.floor(Math.random() * 4)
     this.trump = Card.suits[randomInd]

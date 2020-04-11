@@ -3,6 +3,14 @@ export default class Card {
     this.suit = suit
     this.rank = rank
   }
+
+  isGreater (other, trump) {
+    return (Card.ranks.indexOf(this.rank) > Card.ranks.indexOf(other.rank)) || (this.suit === trump && other.suit !== trump)
+  }
+
+  isCanBeat (other, trump) {
+    return (this.suit === other.suit && this.isGreater(other, trump)) || (this.suit === trump && other.suit !== trump)
+  }
 }
 
 Card.suits = ['Heart', 'Diamond', 'Club', 'Spade']

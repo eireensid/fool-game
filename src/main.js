@@ -33,10 +33,19 @@ import Player from './classes/Player'
 // console.log('list', list)
 
 let deck = new Deck()
-let player = new Player('Ivan')
-player.takeCards(deck)
-console.log('player', player)
+let first = deck.pickCard()
+let second = deck.pickCard()
+let isFirstGreater = first.isGreater(second, deck.trump)
+let isSecondGreater = second.isGreater(first, deck.trump)
+let isCanBeat1 = first.isCanBeat(second, deck.trump)
+let isCanBeat2 = second.isCanBeat(first, deck.trump)
 
+console.log('first', first)
+console.log('second', second)
+console.log('first is greater', isFirstGreater)
+console.log('second is greater', isSecondGreater)
+console.log('first can beat', isCanBeat1)
+console.log('second can beat', isCanBeat2)
 console.log('trump', deck.trump)
 
 Vue.config.productionTip = false
