@@ -61,4 +61,16 @@ export default class List {
       this.head = newNode
     }
   }
+
+  toArr () {
+    let arr = []
+    let curNode = this.cardList.head
+    if (curNode === null) return arr
+    arr.push(curNode.value)
+    while (curNode.next !== null) {
+      curNode = curNode.next
+      arr.push(curNode.value)
+    }
+    return arr
+  }
 }
