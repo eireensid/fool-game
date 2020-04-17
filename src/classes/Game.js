@@ -46,20 +46,32 @@ export default class Game {
       let startGiveCard = this.getMinCard(startPlayer.cards, this.trump)
       if (startGiveCard === null) {
         this.removePlayer(startPlayer)
+        console.log(nextPlayer.name, 'won')
         this.startPlayerInd = this.startPlayerInd % this.players.length
         continue 
       }
+      console.log(startPlayer.name, 'gave', nextPlayer.name, startGiveCard)
       startPlayer.deleteCard(startGiveCard)
       // Следующий игрок отбивается
       let nextPlayerInd = this.startPlayerInd + 1 % this.players.length 
       let nextPlayer = this.players[nextPlayerInd] 
       let canBeatCards = nextPlayer.cards.filter(card => card.isCanBeat(startGiveCard, this.trump))
+      let afterNextPlayerInd = this.startPlayerInd + 2 % this.players.length
       if (!canBeatCards.length) {
         nextPlayer.cards.push(startGiveCard)
-        this.startPlayerInd = this.startPlayerInd + 2 % this.players.length
+        console.log(nextPlayer.name, 'took the card')
+        this.startPlayerInd = afterNextPlayerInd
         continue
       }
-      let minCanBeatCards = this.getMinCard(canBeatCards, this.trump)
+      let minCanBeatCard = this.getMinCard(canBeatCards, this.trump)
+      console.log(nextPlayer.name, 'beat the card')
+      let afterNextPlayer = this.players[afterNextPlayerInd]
+      let cardsOnTable = []
+      cardsOnTable.push(startGiveCard)
+      cardsOnTable.push(minCanBeatCard)
+      // первыйй игрок ищет у себя карты для подкидывания
+      let startPlayerMatchingCards = startPlayer.findCardsForThrowing(cardsOnTable, this.trump)
+      // первый игрок отдает найденные карты, и они удаляются из его карт (delete)
     }
     console.log('Game over, lost Player ', this.players[0].name)
   }
